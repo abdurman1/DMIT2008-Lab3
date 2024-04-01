@@ -1,4 +1,4 @@
-import { addToDoModel } from '../models/toDoModel'; 
+import { addToDoModel } from '../models/toDoListModel'; 
 
 export function addToDoController() {
     const form = document.querySelector('#add-todo-form');

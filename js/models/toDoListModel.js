@@ -42,3 +42,17 @@ export function updateToDo(updatedToDo) {
     const store = updateStore(payload)
     notify(store)
 }
+
+export async function addNewToDo(todo) {
+    const dbRef = ref(db, 'todos')
+    const newToDoRef = push(dbRef)
+    await set(newToDoRef, todo)
+    const response = await get(dbRef)
+    let payload = await response.val()
+    payload = Object.entries(payload)
+    let toDoItems = payload.map((item) => {
+        return {...item[1], uid: item[0]}
+    })
+    const store = await createStore(toDoItems)
+    notify(store)
+}
