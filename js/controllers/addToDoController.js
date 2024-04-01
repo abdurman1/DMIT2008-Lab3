@@ -1,4 +1,4 @@
-import { addToDoModel } from '../models/toDoListModel'; 
+import { addNewToDo } from '../models/toDoListModel'; 
 
 export function addToDoController() {
     const form = document.querySelector('#add-todo-form');
@@ -13,7 +13,7 @@ export function addToDoController() {
         const status = formData.get('status');
 
         
-        addToDoModel(todo, category, status); 
+        addNewToDo(todo, category, status); 
 
 
         form.reset();
