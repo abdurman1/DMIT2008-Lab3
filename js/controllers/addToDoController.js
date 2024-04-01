@@ -1,6 +1,6 @@
 import { addToDoModel } from '../models/toDoModel'; 
 
-export function addNewToDoController() {
+export function addToDoController() {
     const form = document.querySelector('#add-todo-form');
 
     form.addEventListener('submit', handleSubmit);

@@ -2,7 +2,7 @@ import { toDoItemTemplate } from '../templates/toDoItemTemplate';
 import { subscribe } from '../models/toDoListModel';
 import { deleteToDoController } from '../controllers/deleteToDoController';
 import { updateToDoController } from '../controllers/updateToDoController';
-import { addNewToDoController } from '../controllers/addNewToDoController'; // Import the addNewToDoController
+import { addToDoController } from '../controllers/addToDoController'; 
 
 let view;
 
@@ -19,7 +19,7 @@ export function toDoListView() {
     
     const addButton = document.querySelector('#add');
     addButton.addEventListener('click', () => {
-        addNewToDoController(); 
+        addToDoController(); 
     });
 }
 
