@@ -1,45 +1,52 @@
-import {toDoItemTemplate} from '../templates/toDoItemTemplate'
+import { toDoItemTemplate } from '../templates/toDoItemTemplate';
 import { subscribe } from '../models/toDoListModel';
 import { deleteToDoController } from '../controllers/deleteToDoController';
 import { updateToDoController } from '../controllers/updateToDoController';
+import { addNewToDoController } from '../controllers/addNewToDoController'; // Import the addNewToDoController
+
 let view;
 
 const testObject = {
-    uid:12345,
+    uid: 12345,
     todo: 'Pick up shoes',
     category: 'work',
     status: 'pending',
 }
 
 export function toDoListView() {
-    view = document.querySelector('#to-do-list')
-    render()
+    view = document.querySelector('#to-do-list');
+    render();
+    
+    const addButton = document.querySelector('#add');
+    addButton.addEventListener('click', () => {
+        addNewToDoController(); 
+    });
 }
 
-subscribe(render)
+subscribe(render);
 
-function render (data) {
-    const div = document.createElement('div')
-    const toDoList = document.querySelector('#item-container')
-    toDoList.replaceChildren()
+function render(data) {
+    const div = document.createElement('div');
+    const toDoList = document.querySelector('#item-container');
+    toDoList.replaceChildren();
     
     data.forEach((item) => {
-        div.prepend(toDoItemTemplate(item))
+        div.prepend(toDoItemTemplate(item));
     })
 
-    toDoList.append(div)
+    toDoList.append(div);
 }
 
 function onHandleClick(e) {
     switch (e.target.id) {
         case 'delete':
-            deleteToDoController(e.target.dataset.uid)
-            break
+            deleteToDoController(e.target.dataset.uid);
+            break;
         case 'edit':
-            console.log(e.target.dataset.uid)
-            updateToDoController(e.target.dataset.uid)
-            break
+            console.log(e.target.dataset.uid);
+            updateToDoController(e.target.dataset.uid);
+            break;
         default:
-            null
+            null;
     }
 }
